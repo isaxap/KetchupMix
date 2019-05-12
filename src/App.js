@@ -4,7 +4,7 @@ import './App.sass';
 class App extends Component {
   render(){
     return (
-      <div> Hello world </div>
+      <h1> Hello world </h1>
     )
   }
 }
