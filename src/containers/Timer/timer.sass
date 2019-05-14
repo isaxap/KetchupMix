@@ -1,0 +1,34 @@
+@import '../../style/_style.sass'
+
+button[name='start']
+  display: block
+  height: 300px
+  width: 300px
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  margin: auto
+  border: 0px solid $red
+  z-index: 999
+
+.timer
+  &.passive
+    background: $red
+    &:hover
+      background: $green
+  &.active
+    background: $green
+    &:hover
+      background: $red
+  &.stop
+    background: $red
+    &:hover
+      background: $green
+.relax
+  .timer
+    &.passive
+      background: $green
+      &:hover
+        background: $red

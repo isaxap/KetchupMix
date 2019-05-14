@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
-import './App.sass';
+import React, {Component} from 'react'
+import './App.sass'
+import Layout from './hoc/Layout'
 
 class App extends Component {
   render(){
     return (
-      <h1> Hello world </h1>
+      <Layout />
     )
   }
 }
