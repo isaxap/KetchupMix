@@ -84,7 +84,7 @@ class Timer extends Component {
       '| STATUS: ' + this.state.control.status,
       '| TIME: ' + this.state.control.currentTime,
       '| STAGE: ' + this.state.control.numberTimer,
-      '| COUNT: ' + Math.round(this.state.control.count/2) + ' |') // NEED DELETE
+      '| COUNT: ' + Math.round(this.state.control.count/2) + ' |') // TODO:  NEED DELETE
   }
 
   componentWillMount () {
@@ -95,7 +95,7 @@ class Timer extends Component {
 
     console.log(
       '| STATUS: ' + this.state.control.status,
-      '| TIME: ' + this.state.control.currentTime + ' |') // NEED DELETE
+      '| TIME: ' + this.state.control.currentTime + ' |') // TODO:  NEED DELETE
 
       const cls = ['btn-floating', 'waves-effect', 'waves-light', 'timer', this.state.control.status]
       if (this.state.control.status === 'active') cls.push('pulse')
