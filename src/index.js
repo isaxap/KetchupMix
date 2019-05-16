@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom'
 import './index.sass'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 
-const store = createStore()
+import {PersistGate} from 'redux-persist/integration/react'
+import configureStore from './config/configureStore'
+
+const { store, persistor } = configureStore();
 
 const app = (
-  <Provider>
-    <App />
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>
 )
 
