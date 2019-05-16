@@ -21,7 +21,7 @@ class Timer extends Component {
   }
 
   updateTimer = () => {
-    const control = this.state.control
+    const control = {...this.state.control}
 
     control.currentTime --
 
@@ -43,14 +43,14 @@ class Timer extends Component {
   }
 
   stopTimer = () => {
-    const control = this.state.control
+    const control = {...this.state.control}
     this.props.changeBackground('stop')
     clearInterval(control.timer)
     this.setState({control})
   }
 
   startTimer = () => {
-    const control = this.state.control
+    const control = {...this.state.control}
 
     const timer = setInterval(this.updateTimer, 1000);
     control.timer = timer
@@ -60,8 +60,8 @@ class Timer extends Component {
 
 
   setupTime = () => {
-    const control = this.state.control
-    const setup = this.state.setup
+    const control = {...this.state.control}
+    const setup = {...this.state.setup}
 
     control.currentTime = setup.time[control.numberTimer]
     this.setState ({control})
@@ -69,8 +69,8 @@ class Timer extends Component {
   }
 
   onHeadButtonClickHandler = () => {
-    const control = this.state.control
-    const setup = this.state.setup
+    const control = {...this.state.control}
+    const setup = {...this.state.setup}
 
     control.status === 'active' && control.currentTime < setup.time[control.numberTimer] ? this.stopTimer () : this.startTimer () // start/stop timer
 
@@ -97,9 +97,12 @@ class Timer extends Component {
       '| STATUS: ' + this.state.control.status,
       '| TIME: ' + this.state.control.currentTime + ' |') // NEED DELETE
 
+      const cls = ['btn-floating', 'waves-effect', 'waves-light', 'timer', this.state.control.status]
+      if (this.state.control.status === 'active') cls.push('pulse')
+
     return (
       <button
-          className={"btn-floating waves-effect waves-light timer " + this.state.control.status}
+          className={cls.join(' ')}
           type="button" name="start"
           onClick={this.onHeadButtonClickHandler}>
         <DisplayTimer
