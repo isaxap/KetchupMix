@@ -55,7 +55,7 @@ class Layout extends Component {
             changeToRelax={this.changeToRelax}
           />
           <CounterTomato />
-          <Graph />
+
         </div>
       </React.Fragment>
     )
