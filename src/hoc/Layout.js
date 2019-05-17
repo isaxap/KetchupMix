@@ -2,25 +2,33 @@ import React, {Component} from 'react'
 import './layout.sass'
 import Timer from '../containers//Timer/Timer'
 import SettingToggle from '../components/Setting/SettingToggle/SettingToggle'
-import Drover from '../components/Setting/Drower/Drover'
+import SettingDrover from '../components/Setting/SettingDrover/SettingDrover'
+import CounterTomato from '../components/CounterTomato/CounterTomato'
+import Graph from '../components/GraphDrover/Graph/Graph'
 
 class Layout extends Component {
   state = {
     control: {
       status: 'passive', //'active' || 'passive' || 'stop' || 'relax'
-      menu: false
+      menuSetting: false
     }
   }
 
   settingMenuHandler = () => {
     const control = this.state.control
-    control.menu = !control.menu
+    control.menuSetting = !control.menuSetting
     this.setState ({control})
   }
 
   menuCloseHandler = () => {
     const control = this.state.control
-    control.menu = false
+    control.menuSetting = false
+    this.setState ({control})
+  }
+
+  changeToRelax = () => {
+    const control = this.state.control
+    control.status = 'relax'
     this.setState ({control})
   }
 
@@ -36,13 +44,18 @@ class Layout extends Component {
         <div className={"first-layout " + this.state.control.status}>
           <SettingToggle
             onToggle={this.settingMenuHandler}
-            isOpen={this.state.control.menu}
+            isOpen={this.state.control.menuSetting}
           />
-          <Drover
-            isOpen={this.state.control.menu}
+          <SettingDrover
+            isOpen={this.state.control.menuSetting}
             onClose={this.menuCloseHandler}
           />
-          <Timer changeBackground={this.changeBackground}/>
+          <Timer
+            changeBackground={this.changeBackground}
+            changeToRelax={this.changeToRelax}
+          />
+          <CounterTomato />
+          <Graph />
         </div>
       </React.Fragment>
     )

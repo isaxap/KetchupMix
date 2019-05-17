@@ -1,9 +1,9 @@
 import React from 'react'
-import './settingtoggle.sass'
+import './settingToggle.sass'
 
 const SettingToggle = props => {
   const cls = ['fas', 'setting-toggle']
-  props.isOpen ? cls.push('fa-times') : cls.push('fa-cog') 
+  props.isOpen ? cls.push('fa-times') : cls.push('fa-cog')
 
   return (
     <i

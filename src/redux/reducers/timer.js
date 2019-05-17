@@ -1,29 +1,20 @@
-import {TEST} from '../actions/actionsTypes'
+import {UPDATE_COUNT, RESET_COUNT} from '../actions/actionsTypes'
 
 const initialState = {
-  setup:
-    {
-      time: [10, 20, 30], // work time, short-break time, long-break time. time in secund
-      countTomato: 12
-    },
-  control:
-    {
-      count: 1, //number, count tomato
-      numberTimer: 0, // 0-work, 1-short-break, 2-long-break
-      currentTime: 0, // time is active in secund
-      status: 'passive', // 'active' || 'passive' || 'stop'
-      timer: null // function
-    }
+  count: 1, //number, count tomato
 }
 
-export default function counter(state = initialState, action) {
+export default function timer(state = initialState, action) {
   switch (action.type) {
-    case TEST:
+    case UPDATE_COUNT:
       return {
-        counter: state.counter + action.payload
+        count: state.count + 1
+      }
+    case RESET_COUNT:
+      return {
+        count: + 1
       }
     default:
       return state
-
   }
 }

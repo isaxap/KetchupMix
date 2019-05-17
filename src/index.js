@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.sass'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
+
 import {Provider} from 'react-redux'
 
 import {PersistGate} from 'redux-persist/integration/react'

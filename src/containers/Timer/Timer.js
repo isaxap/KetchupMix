@@ -1,27 +1,25 @@
 import React, {Component} from 'react'
 import './timer.sass'
 import DisplayTimer from '../../components/DisplayTimer/DisplayTimer'
+import {connect} from 'react-redux'
+import {updateCount} from '../../redux/actions/actionTimer'
+
 
 class Timer extends Component {
 
   state = {
-    setup:
-    {
-      time: [10, 20, 30], // work time, short-break time, long-break time. time in secund
-      errorTime: 'Err: Time is not define'
-    },
     control:
     {
-      count: 1, //number, count tomato
       numberTimer: 0, // 0-work, 1-short-break, 2-long-break
       currentTime: 0, // time is active in secund
       status: 'passive', // 'active' || 'passive' || 'stop'
-      timer: null // function
+      timer: null, // function
+      test: 1 //1-test, 60-normal
     }
   }
 
   updateTimer = () => {
-    const control = {...this.state.control}
+    const control = this.state.control
 
     control.currentTime --
 
@@ -33,24 +31,22 @@ class Timer extends Component {
 
       clearInterval(control.timer)  //clear timer time
 
-      control.count ++                                                              // switch timer
-      control.count % 2 !== 0 ? control.numberTimer = 0 :                           // 3 work time -> 3 short-break time
-      control.count % 8 !== 0 ? control.numberTimer = 1 : control.numberTimer = 2   // 1 work time -> 1 long-break time
-
-      this.setupTime()  //resetup timer time
+      this.props.updateCount()
+      this.props.count % 2 !== 0 || this.props.count === 1 ? control.numberTimer = 0 : // 3 work time -> 3 short-break time
+      this.props.count % 8 !== 0 ? control.numberTimer = 1 : control.numberTimer = 2   // 1 work time -> 1 long-break time
     }
     this.setState({control})
   }
 
   stopTimer = () => {
-    const control = {...this.state.control}
+    const control = this.state.control
     this.props.changeBackground('stop')
     clearInterval(control.timer)
     this.setState({control})
   }
 
   startTimer = () => {
-    const control = {...this.state.control}
+    const control = this.state.control
 
     const timer = setInterval(this.updateTimer, 1000);
     control.timer = timer
@@ -58,21 +54,10 @@ class Timer extends Component {
     this.setState({control})
   }
 
-
-  setupTime = () => {
-    const control = {...this.state.control}
-    const setup = {...this.state.setup}
-
-    control.currentTime = setup.time[control.numberTimer]
-    this.setState ({control})
-
-  }
-
   onHeadButtonClickHandler = () => {
-    const control = {...this.state.control}
-    const setup = {...this.state.setup}
+    const control = this.state.control
 
-    control.status === 'active' && control.currentTime < setup.time[control.numberTimer] ? this.stopTimer () : this.startTimer () // start/stop timer
+    control.status === 'active' ? this.stopTimer () : this.startTimer () // start/stop timer
 
     control.status =                                                    // if status timer :
     control.status === 'active' && control.currentTime > 0 ? 'stop' :   // active and have currentTime -> status - 'stop'
@@ -83,22 +68,30 @@ class Timer extends Component {
     console.log(
       '| STATUS: ' + this.state.control.status,
       '| TIME: ' + this.state.control.currentTime,
-      '| STAGE: ' + this.state.control.numberTimer,
-      '| COUNT: ' + Math.round(this.state.control.count/2) + ' |') // TODO:  NEED DELETE
+      '| STAGE: ' + this.state.control.numberTimer + ' |') // TODO:  NEED DELETE
   }
 
   componentWillMount () {
-    if (this.state.control.currentTime === 0) this.setupTime()
+    const control = this.state.control
+    if (this.props.count % 2 === 0 && this.props.count !== 1 ) {
+      this.props.changeToRelax()
+      this.props.count % 8 === 0 ? control.numberTimer = 2 : control.numberTimer = 1
+    }
   }
 
   render() {
+      const control = this.state.control
+
+      if (control.status === 'passive') {        //upload time on current settings if timer don't start and if time-out to next timer
+        control.currentTime = this.props.timers[control.numberTimer] * control.test
+      }
 
     console.log(
       '| STATUS: ' + this.state.control.status,
       '| TIME: ' + this.state.control.currentTime + ' |') // TODO:  NEED DELETE
 
-      const cls = ['btn-floating', 'waves-effect', 'waves-light', 'timer', this.state.control.status]
-      if (this.state.control.status === 'active') cls.push('pulse')
+      const cls = ['btn-floating', 'waves-effect', 'waves-light', 'timer', control.status]
+      if (control.status === 'active') cls.push('pulse')
 
     return (
       <button
@@ -106,13 +99,29 @@ class Timer extends Component {
           type="button" name="start"
           onClick={this.onHeadButtonClickHandler}>
         <DisplayTimer
-          time={this.state.control.currentTime}
-          controlStatus={this.state.control.status}
-          stage={this.state.control.numberTimer}
+          time={control.currentTime}
+          controlStatus={control.status}
+          stage={control.numberTimer}
         />
       </button>
     )
   }
 }
 
-export default Timer
+function mapStateToProps (state) {
+  return {
+    //SETTINGS
+    timers: state.setup.timers,
+    countTomato: state.setup.countTomato,
+    //CONTROL
+    count: state.timer.count
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    updateCount: () => dispatch(updateCount())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timer)

@@ -1,6 +1,7 @@
 import React from 'react'
-import './drover.sass'
+import './settingDrover.sass'
 import BackDrop from '../../UI/BackDrop/BackDrop'
+import SettingControls from './SettingControls/SettingControls'
 
 const Drover = props => {
   const cls = ['drover']
@@ -9,6 +10,7 @@ const Drover = props => {
   return (
     <React.Fragment>
       <div className={cls.join(' ')}>
+        <SettingControls />
       </div>
       {props.isOpen ? <BackDrop onClose={props.onClose}/> : null}
     </React.Fragment>

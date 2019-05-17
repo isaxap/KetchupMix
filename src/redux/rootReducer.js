@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
-import test from './reducers/test' // TODO: need delete
 import timer from './reducers/timer'
+import setup from './reducers/setup'
+import history from './reducers/history'
 
 export default combineReducers({
-  test, // TODO: need delete
-  timer
+  timer,
+  setup,
+  history
 })
