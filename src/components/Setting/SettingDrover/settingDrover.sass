@@ -1,0 +1,16 @@
+.drover
+  position: fixed
+  right: 0
+  top: 0
+  bottom: 0
+  width: 300px
+  background: rgba(15, 15, 15, .5)
+  padding: 20px 10px
+  transform: translateX(0px)
+  transition: transform .3s ease-in-out
+  z-index: 50
+  &.close
+    transform: translateX(300px)
+.stop
+  .drover
+    background: rgba(200, 200, 200, .1)
