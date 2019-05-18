@@ -77,7 +77,10 @@ class Layout extends Component {
             isOpen={this.state.control.menuGraph}/>
           <CounterTomato />
 <<<<<<< HEAD
+<<<<<<< HEAD
           <Graph />
+=======
+>>>>>>> a3f6d31e... Add Graph
 =======
 >>>>>>> a3f6d31e... Add Graph
         </div>
