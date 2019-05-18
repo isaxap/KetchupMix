@@ -4,16 +4,19 @@ import Timer from '../containers//Timer/Timer'
 import SettingToggle from '../components/Setting/SettingToggle/SettingToggle'
 import SettingDrover from '../components/Setting/SettingDrover/SettingDrover'
 import CounterTomato from '../components/CounterTomato/CounterTomato'
-import Graph from '../components/GraphDrover/Graph/Graph'
+import GraphToggle from '../components/Graph/GraphToggle/GraphToggle'
+import GraphDrover from '../components/Graph/GraphDrover/GraphDrover'
 
 class Layout extends Component {
   state = {
     control: {
       status: 'passive', //'active' || 'passive' || 'stop' || 'relax'
-      menuSetting: false
+      menuSetting: false,
+      menuGraph: false
     }
   }
 
+  //Setting
   settingMenuHandler = () => {
     const control = this.state.control
     control.menuSetting = !control.menuSetting
@@ -25,7 +28,19 @@ class Layout extends Component {
     control.menuSetting = false
     this.setState ({control})
   }
+  //Graph
+  graphMenuHandler = () => {
+    const control = this.state.control
+    control.menuGraph = !control.menuGraph
+    this.setState ({control})
+  }
 
+  menuGraphCloseHandler = () => {
+    const control = this.state.control
+    control.menuGraph = false
+    this.setState ({control})
+  }
+  //Other
   changeToRelax = () => {
     const control = this.state.control
     control.status = 'relax'
@@ -54,8 +69,17 @@ class Layout extends Component {
             changeBackground={this.changeBackground}
             changeToRelax={this.changeToRelax}
           />
+          <GraphToggle
+            onToggle={this.graphMenuHandler}
+            isOpen={this.state.control.menuGraph}/>
+          <GraphDrover
+            onClose={this.menuGraphCloseHandler}
+            isOpen={this.state.control.menuGraph}/>
           <CounterTomato />
+<<<<<<< HEAD
           <Graph />
+=======
+>>>>>>> a3f6d31e... Add Graph
         </div>
       </React.Fragment>
     )

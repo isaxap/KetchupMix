@@ -2,7 +2,7 @@ import React from 'react'
 import './settingControls.sass'
 import {connect} from 'react-redux'
 import {setWorkTime, setShortTime, setLongTime, setCountTime} from '../../../../redux/actions/actionSetting'
-
+// import {addHistory} from '../../../../redux/actions/actions'
 
 const SettingControls = props => {
   const items = [
@@ -43,6 +43,7 @@ const SettingControls = props => {
           </React.Fragment>
         )})}
       </div>
+      {/*<button onClick={() => props.addHistory(3, 4,items[0].context)}>'run'</button>*/}
     </div>
   )
 }
@@ -61,7 +62,9 @@ function mapDispatchToProps (dispatch) {
     setWorkTime: number => dispatch(setWorkTime(number)),
     setShortTime: number => dispatch(setShortTime(number)),
     setLongTime: number => dispatch(setLongTime(number)),
-    setCountTomato: number => dispatch(setCountTime(number))
+    setCountTomato: number => dispatch(setCountTime(number)),
+
+    // addHistory: (day, tomato, plan) => dispatch(addHistory(day, tomato, plan))
   }
 }
 
