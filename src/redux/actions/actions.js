@@ -6,9 +6,11 @@ export function test(number) {
     payload: number
   }
 }
-export function addHistory(date) {
+export function addHistory(day, tomato, plan) {
   return {
     type: ADD_HISTORY,
-    payload: date
+    day: day,
+    tomato: tomato,
+    plan: plan
   }
 }

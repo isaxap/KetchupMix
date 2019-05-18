@@ -1,8 +1,12 @@
 import React from 'react'
 import './counterTomato.sass'
 import {connect} from 'react-redux'
+import {addHistory} from '../../redux/actions/actions'
+
+const date = new Date()
 
 const CounterTomato = (props) => {
+  props.addHistory(date.getDay(), props.total, props.count) //Send to history
   return (
     <div className='counter-tomato'>
     {props.total >= props.count ?
@@ -20,8 +24,14 @@ const CounterTomato = (props) => {
 function mapStateToProps (state) {
   return {
     count: state.setup.countTomato,
-    total: Math.floor(state.timer.count / 2),
+    total: Math.floor(state.timer.count / 2)
   }
 }
 
-export default connect(mapStateToProps)(CounterTomato)
+function mapDispatchToProps (dispatch) {
+  return {
+    addHistory: (day, tomato, plan) => dispatch(addHistory(day, tomato, plan))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterTomato)

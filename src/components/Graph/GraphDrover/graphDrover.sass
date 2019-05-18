@@ -1,0 +1,19 @@
+@import '../../../style/style.sass'
+
+.graphDrover
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  height: 350px
+  background: white
+  padding: 20px 10px
+  transform: translateY(0px)
+  transition: transform .3s ease-in-out
+  z-index: 50
+  border-top: 1px solid $red
+  &.close
+    transform: translateY(350px)
+.stop
+  .graphDrover
+    background: white
