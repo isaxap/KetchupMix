@@ -1,25 +1,27 @@
 @import '../../../style/style.sass'
 
-.graph-toggle
-  width: 100%
+.task-toggle
   position: fixed
-  bottom: 0
+  top: 20px
+  left: 20px
   transition: all .3s ease-in-out
-  z-index: 10
+  z-index: 100
   color: white
+  border: 1px solid $white
   display: block
   text-align: center
   padding-top: 10px
+  width: 40px
   height: 40px
+  border-radius: 999px
   cursor: pointer
   &:hover
     background: $white
     color: $red
-  &.fa-angle-double-down
-    bottom: 350px
-    &:hover
-      background: none
-      color: $white
 .active
-  .graph-toggle
+  .task-toggle
     color: $red
+    border: 1px solid $red
+    &:hover
+      background: $red
+      color: $white

@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {setWorkTime, setShortTime, setLongTime, setCountTime} from '../../../../redux/actions/actionSetting'
 // import {addHistory} from '../../../../redux/actions/actions'
 
+
 const SettingControls = props => {
   const items = [
     {label: 'Work time', context: props.timers[0],

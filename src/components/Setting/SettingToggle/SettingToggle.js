@@ -9,7 +9,7 @@ const SettingToggle = props => {
     <i
       className={cls.join(' ')}
       onClick={props.onToggle}
-    >  </i>
+    />
   )
 }
 

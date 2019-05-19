@@ -11,5 +11,5 @@ export const RESET_COUNT = 'RESET_COUNT'
 
 export const ADD_TASK = 'ADD_TASK'
 export const UPDATE_TASK = 'UPDATE_TASK'
-export const CLEAR_TASK = 'CLEAR_TASK'
+export const UPDATE_TIME = 'UPDATE_TIME'
 export const DELETE_TASK = 'DELETE_TASK'
