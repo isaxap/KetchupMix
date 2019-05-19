@@ -3,6 +3,7 @@ import './timer.sass'
 import DisplayTimer from '../../components/DisplayTimer/DisplayTimer'
 import {connect} from 'react-redux'
 import {updateCount} from '../../redux/actions/actionTimer'
+import {updateTime} from '../../redux/actions/actionTask'
 
 
 class Timer extends Component {
@@ -22,7 +23,7 @@ class Timer extends Component {
     const control = this.state.control
 
     control.currentTime --
-
+    if (control.numberTimer === 0) this.props.updateTime() 
     if (control.currentTime === 0) { //end timer
 
       control.status = 'passive'
@@ -120,7 +121,8 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    updateCount: () => dispatch(updateCount())
+    updateCount: () => dispatch(updateCount()),
+    updateTime: () => dispatch(updateTime())
   }
 }
 

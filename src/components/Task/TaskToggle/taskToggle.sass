@@ -1,11 +1,11 @@
 @import '../../../style/style.sass'
 
-.setting-toggle
+.task-toggle
   position: fixed
   top: 20px
-  right: 20px
+  left: 20px
   transition: all .3s ease-in-out
-  z-index: 10
+  z-index: 100
   color: white
   border: 1px solid $white
   display: block
@@ -18,10 +18,8 @@
   &:hover
     background: $white
     color: $red
-  &.fa-times
-    z-index: 90
 .active
-  .setting-toggle
+  .task-toggle
     color: $red
     border: 1px solid $red
     &:hover

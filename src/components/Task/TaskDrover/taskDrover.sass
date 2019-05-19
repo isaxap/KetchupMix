@@ -1,0 +1,34 @@
+@import '../../../style/style.sass'
+
+#task-drover
+  .add-task
+    width: 100%
+    input
+      width: 100%
+      padding: 0 10px
+  .task-item
+    width: 100%
+    padding: 0 10px
+    span
+      display: inline-block
+      width: 70%
+    i
+      float: right
+      font-size: .8em
+      line-height: 48px
+      margin-left: 10px
+    .fa-minus
+      font-size: 1.2em
+      color: $red
+  .task-titel
+    text-align: center
+    border-bottom: 1px solid $grey
+    font-size: 1.2em
+    margin-bottom: 10px
+  .active
+    background: rgba(0, 0, 0, .1)
+    span
+      color: $green
+  .done
+    span
+      opacity: .5

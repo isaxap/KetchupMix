@@ -8,3 +8,8 @@ export const SET_COUNT_TIME = 'SET_COUNT_TIME'
 
 export const UPDATE_COUNT = 'UPDATE_COUNT'
 export const RESET_COUNT = 'RESET_COUNT'
+
+export const ADD_TASK = 'ADD_TASK'
+export const UPDATE_TASK = 'UPDATE_TASK'
+export const UPDATE_TIME = 'UPDATE_TIME'
+export const DELETE_TASK = 'DELETE_TASK'
