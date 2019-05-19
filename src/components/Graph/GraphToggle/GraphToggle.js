@@ -9,11 +9,7 @@ const GraphToggle = props => {
     <i
       className={cls.join(' ')}
       onClick={props.onToggle}
-<<<<<<< HEAD
-    >  </i>
-=======
     />
->>>>>>> local
   )
 }
 

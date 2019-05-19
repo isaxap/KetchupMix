@@ -6,10 +6,7 @@ import SettingDrover from '../components/Setting/SettingDrover/SettingDrover'
 import CounterTomato from '../components/CounterTomato/CounterTomato'
 import GraphToggle from '../components/Graph/GraphToggle/GraphToggle'
 import GraphDrover from '../components/Graph/GraphDrover/GraphDrover'
-<<<<<<< HEAD
-=======
 import Task from '../containers/Task/Task'
->>>>>>> local
 
 class Layout extends Component {
   state = {

@@ -3,10 +3,7 @@ import './settingControls.sass'
 import {connect} from 'react-redux'
 import {setWorkTime, setShortTime, setLongTime, setCountTime} from '../../../../redux/actions/actionSetting'
 // import {addHistory} from '../../../../redux/actions/actions'
-<<<<<<< HEAD
-=======
 
->>>>>>> local
 
 const SettingControls = props => {
   const items = [
