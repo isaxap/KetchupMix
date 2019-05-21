@@ -7,6 +7,7 @@ import CounterTomato from '../components/CounterTomato/CounterTomato'
 import GraphToggle from '../components/Graph/GraphToggle/GraphToggle'
 import GraphDrover from '../components/Graph/GraphDrover/GraphDrover'
 import Task from '../containers/Task/Task'
+import Currency from '../containers/Currency/Currency'
 
 class Layout extends Component {
   state = {
@@ -58,6 +59,7 @@ class Layout extends Component {
     return (
       <React.Fragment>
         <div className={"first-layout " + this.state.control.status}>
+          <Currency />
           <Task />
           <SettingToggle
             onToggle={this.settingMenuHandler}
